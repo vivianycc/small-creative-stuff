@@ -13,6 +13,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               posttype
             }
             slug
+            id
           }
         }
       }
@@ -24,9 +25,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   const blogPostTemplate = path.resolve(`src/components/blogLayout.js`);
-  const workLayout = path.resolve(`src/components/layout.js`);
+  const workLayout = path.resolve(`src/components/work-layout.js`);
   result.data.allMdx.nodes.forEach((node) => {
     const slug = node.slug;
+    const id = node.id;
     const posttype = node.frontmatter.posttype;
     if (posttype === "work") {
       createPage({
@@ -34,6 +36,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         component: workLayout,
         context: {
           pagePath: `/work/${slug}`,
+          id: id,
         },
       });
     } else if (posttype === "blog") {
@@ -42,6 +45,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         component: blogPostTemplate,
         context: {
           pagePath: `/blog/${slug}`,
+          id: id,
         },
       });
     } else {
@@ -50,6 +54,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         component: workLayout,
         context: {
           pagePath: `/${slug}`,
+          id: id,
         },
       });
     }

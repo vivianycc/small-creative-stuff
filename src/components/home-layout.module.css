@@ -1,19 +1,7 @@
 /* * {
   outline: 1px solid red;
 } */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
-.site-title {
-  width: 200px;
-  margin: 3rem 0;
-  font-size: 2rem;
-  color: rgb(65, 65, 65);
-  font-weight: 700;
-}
 .container {
   margin: auto;
   max-width: 1000px;
@@ -21,17 +9,6 @@ header {
 }
 .heading {
   color: rebeccapurple;
-}
-.nav-links {
-  display: flex;
-  list-style: none;
-  padding-left: 0;
-}
-.nav-link-item {
-  padding-right: 2rem;
-}
-.nav-link-text {
-  color: black;
 }
 .img-grid {
   display: grid;

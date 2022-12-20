@@ -8,48 +8,38 @@ import {
   navLinkItem,
   navLinkText,
 } from "./home-layout.module.css";
+import Header from "./home-layout";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 
-const Layout = ({ pageTitle, children }) => {
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
+const Layout = ({ data }) => {
   return (
     <div className={container}>
-      <title>
-        {pageTitle} | {data.site.siteMetadata.title}
-      </title>
-      <header className={siteTitle}>BLOGBLOGBLOG</header>
-      <nav>
-        <ul className={navLinks}>
-          <li className={navLinkItem}>
-            <Link to="/" className={navLinkText}>
-              Home
-            </Link>
-          </li>
-          <li className={navLinkItem}>
-            <Link to="/about" className={navLinkText}>
-              About
-            </Link>
-          </li>
-          <li className={navLinkItem}>
-            <Link to="/blog" className={navLinkText}>
-              Blog
-            </Link>
-          </li>
-        </ul>
-      </nav>
+      <title>Blog | {data.site.siteMetadata.title}</title>
+      <Header />
+
       <main>
-        <h1 className={heading}>{pageTitle}</h1>
-        {children}
+        <h1 className={heading}>{data.mdx.frontmatter.title}</h1>
+        <MDXRenderer>{data.mdx.body}</MDXRenderer>
       </main>
     </div>
   );
 };
 
+export const query = graphql`
+  query getPost($id: String) {
+    mdx(id: { eq: $id }) {
+      id
+      frontmatter {
+        title
+      }
+      body
+    }
+    site {
+      id
+      siteMetadata {
+        title
+      }
+    }
+  }
+`;
 export default Layout;
