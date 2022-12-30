@@ -16,7 +16,7 @@ const Work = ({ data, pageContext }) => {
       <Header />
       <main>
         <p>{data.mdx.frontmatter.date}</p>
-        <GatsbyImage image={image} alt={data.mdx.frontmatter.hero_image_alt} />
+        {/* <GatsbyImage image={image} alt={data.mdx.frontmatter.hero_image_alt} /> */}
         <MDXRenderer>{data.mdx.body}</MDXRenderer>
       </main>
     </div>
