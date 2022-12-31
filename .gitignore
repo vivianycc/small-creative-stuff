@@ -3,3 +3,4 @@ node_modules/
 public
 .DS_Store
 {mdx.slug}test.js
+package-lock.json

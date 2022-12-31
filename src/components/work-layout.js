@@ -4,6 +4,9 @@ import { container } from "./home-layout.module.css";
 import Header from "./home-layout";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
+
+deckDeckGoHighlightElement();
 
 const Work = ({ data, pageContext }) => {
   console.log(data, pageContext);
